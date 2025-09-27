@@ -1,0 +1,24 @@
+<h3>Iniciar Ruta</h3>
+
+{{#if this.viajes.list.length}}
+	<div class="viajes-list">
+		{{#each this.viajes.list as |v|}}
+			<div class="viaje-item">
+				<div class="viaje-summary">
+					<strong>{{v.origen}}</strong> → <strong>{{v.destino}}</strong>
+					<span class="muted"> • {{v.fecha}}</span>
+					<button class="nav-button" {{on "click" (fn this.toggleViaje v.id)}}>Ver</button>
+				</div>
+
+				{{#if v.expanded}}
+					<div class="viaje-details">
+						<p>Vehículo: {{v.vehiculo}}</p>
+						<p>Creado: {{v.createdAt}}</p>
+					</div>
+				{{/if}}
+			</div>
+		{{/each}}
+	</div>
+{{else}}
+	<p>No hay viajes creados todavía. Crea uno desde el formulario "Nuevo viaje".</p>
+{{/if}}
