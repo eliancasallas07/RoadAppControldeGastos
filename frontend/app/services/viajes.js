@@ -61,6 +61,24 @@ export default class ViajesService extends Service {
       return newViaje;
     }
   }
+  
+  // Update viaje on backend
+  async updateViaje(id, fields) {
+    try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (this.session?.token) headers['Authorization'] = `Bearer ${this.session.token}`;
+      const res = await fetch(`${config.apiHost}/api/viajes/${id}`, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify(fields),
+      });
+      if (!res.ok) throw new Error('Update failed');
+      await this.fetchViajes();
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
 
   toggle(id) {
     this.list = this.list.map((v) => (v.id === id ? { ...v, expanded: !v.expanded } : v));

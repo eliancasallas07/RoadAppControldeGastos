@@ -100,4 +100,35 @@ class ViajeController extends AbstractController
 
         return $this->json(['status' => 'ok', 'id' => $viaje->getId()], 201);
     }
+    #[Route('/{id}', methods: ['PUT'])]
+    public function update(int $id, Request $request, EntityManagerInterface $em): JsonResponse
+    {
+        $viaje = $em->getRepository(Viaje::class)->find($id);
+        if (!$viaje) {
+            return $this->json(['error' => 'Viaje no encontrado'], 404);
+        }
+
+        $data = json_decode($request->getContent(), true);
+        if (isset($data['origen'])) {
+            $viaje->setOrigen($data['origen']);
+        }
+        if (isset($data['destino'])) {
+            $viaje->setDestino($data['destino']);
+        }
+        if (isset($data['vehiculo'])) {
+            $viaje->setVehiculo($data['vehiculo']);
+        }
+        if (isset($data['fecha'])) {
+            try {
+                $viaje->setFecha(new \DateTime($data['fecha']));
+            } catch (\Exception $e) {
+                // fecha inválida, ignorar
+            }
+        }
+
+        $em->persist($viaje);
+        $em->flush();
+
+        return $this->json(['status' => 'ok', 'id' => $viaje->getId()]);
+    }
 }

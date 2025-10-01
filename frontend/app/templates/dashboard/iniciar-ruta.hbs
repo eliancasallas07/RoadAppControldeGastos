@@ -1,20 +1,43 @@
+
 <h3>Iniciar Ruta</h3>
+<p style="color: #888; font-size: 0.9em;">Viajes cargados: {{this.viajes.list.length}}</p>
 
 {{#if this.viajes.list.length}}
 	<div class="viajes-list">
 		{{#each this.viajes.list as |v|}}
 			<div class="viaje-item">
-				<div class="viaje-summary">
-					<strong>{{v.origen}}</strong> → <strong>{{v.destino}}</strong>
-					<span class="muted"> • {{v.fecha}}</span>
-					<button class="nav-button" {{on "click" (fn this.toggleViaje v.id)}}>Ver</button>
-				</div>
-
-				{{#if v.expanded}}
-					<div class="viaje-details">
-						<p>Vehículo: {{v.vehiculo}}</p>
-						<p>Creado: {{v.createdAt}}</p>
+				{{#if (eq this.editingViaje v.id)}}
+					<form class="viaje-edit-form" {{on "submit" (fn this.guardarEdicion)}}>
+						<label>Origen:
+							<input type="text" value={{this.editFields.origen}} {{on "input" (fn this.updateField "origen")}} />
+						</label>
+						<label>Destino:
+							<input type="text" value={{this.editFields.destino}} {{on "input" (fn this.updateField "destino")}} />
+						</label>
+						<label>Vehículo:
+							<input type="text" value={{this.editFields.vehiculo}} {{on "input" (fn this.updateField "vehiculo")}} />
+						</label>
+						<label>Fecha:
+							<input type="date" value={{this.editFields.fecha}} {{on "input" (fn this.updateField "fecha")}} />
+						</label>
+						<button type="button" {{on "click" this.guardarEdicion}}>Guardar</button>
+						<button type="button" {{on "click" this.cancelarEdicion}}>Cancelar</button>
+					</form>
+				{{else}}
+					<div class="viaje-summary">
+						<strong>{{v.origen}}</strong> → <strong>{{v.destino}}</strong>
+						<span class="muted"> • {{v.fecha}}</span>
+						<button class="nav-button" {{on "click" (fn this.toggleViaje v.id)}}>Ver</button>
+						<button class="nav-button" {{on "click" (fn this.editarViaje v)}}>Editar</button>
+						<button class="nav-button" {{on "click" (fn this.finalizarViaje v)}}>Finalizar</button>
+						<button class="nav-button" {{on "click" (fn this.eliminarViaje v)}}>Eliminar</button>
 					</div>
+					{{#if v.expanded}}
+						<div class="viaje-details">
+							<p>Vehículo: {{v.vehiculo}}</p>
+							<p>Creado: {{v.createdAt}}</p>
+						</div>
+					{{/if}}
 				{{/if}}
 			</div>
 		{{/each}}
