@@ -1,5 +1,36 @@
-
 <h3>Iniciar Ruta</h3>
+<form class="nuevo-viaje-form" style="margin-bottom:2em; background:#f8f8f8; padding:1em; border-radius:8px;" {{on "submit" (fn this.crearNuevoViaje)}}>
+  <div style="display:flex; flex-wrap:wrap; gap:1em;">
+    <div style="flex:1 1 22%"><label>Origen:<input type="text" value={{this.nuevoViaje.origen}} {{on "input" (fn this.updateNuevoViajeField "origen")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Destino:<input type="text" value={{this.nuevoViaje.destino}} {{on "input" (fn this.updateNuevoViajeField "destino")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Vehículo:<input type="text" value={{this.nuevoViaje.vehiculo}} {{on "input" (fn this.updateNuevoViajeField "vehiculo")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Fecha:<input type="date" value={{this.nuevoViaje.fecha}} {{on "input" (fn this.updateNuevoViajeField "fecha")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Valor flete:<input type="number" value={{this.nuevoViaje.valorFlete}} {{on "input" (fn this.updateNuevoViajeField "valorFlete")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Comisión:<input type="number" value={{this.nuevoViaje.comision}} {{on "input" (fn this.updateNuevoViajeField "comision")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Cargue valor:<input type="number" value={{this.nuevoViaje.cargueValor}} {{on "input" (fn this.updateNuevoViajeField "cargueValor")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Descargue valor:<input type="number" value={{this.nuevoViaje.descargueValor}} {{on "input" (fn this.updateNuevoViajeField "descargueValor")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Descarrozar:<input type="number" value={{this.nuevoViaje.descarrozar}} {{on "input" (fn this.updateNuevoViajeField "descarrozar")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Peajes:<input type="number" value={{this.nuevoViaje.peajes}} {{on "input" (fn this.updateNuevoViajeField "peajes")}} /></label></div>
+    <div style="flex:1 1 22%"><label>ACPM:<input type="number" value={{this.nuevoViaje.acpm}} {{on "input" (fn this.updateNuevoViajeField "acpm")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Parqueos:<input type="number" value={{this.nuevoViaje.parqueos}} {{on "input" (fn this.updateNuevoViajeField "parqueos")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Lavados:<input type="number" value={{this.nuevoViaje.lavados}} {{on "input" (fn this.updateNuevoViajeField "lavados")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Reparaciones:<input type="number" value={{this.nuevoViaje.reparaciones}} {{on "input" (fn this.updateNuevoViajeField "reparaciones")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Descuentos:<input type="number" value={{this.nuevoViaje.descuentos}} {{on "input" (fn this.updateNuevoViajeField "descuentos")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Envío de documentos:<input type="file" multiple {{on "change" (fn this.updateNuevoViajeFile "documentos")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Peso en kilos:<input type="number" value={{this.nuevoViaje.pesoKilos}} {{on "input" (fn this.updateNuevoViajeField "pesoKilos")}} /></label></div>
+    <div style="flex:1 1 22%"><label>Tipo de carga:
+      <select value={{this.nuevoViaje.tipoCarga}} {{on "change" (fn this.updateNuevoViajeField "tipoCarga")}}>
+        <option value="">Seleccione</option>
+        <option value="frutas">Frutas</option>
+        <option value="electrodomesticos">Electrodomésticos</option>
+        <option value="granos">Granos</option>
+        <option value="materiales">Materiales</option>
+        <option value="otros">Otros</option>
+      </select>
+    </label></div>
+  </div>
+  <button type="submit" style="margin-top:1em; background:#007bff; color:white; border:none; padding:0.7em 2em; border-radius:5px; font-size:1.1em;">Guardar</button>
+</form>
 <p style="color: #888; font-size: 0.9em;">Viajes cargados: {{this.viajes.list.length}}</p>
 
 {{#if this.viajes.list.length}}

@@ -10,6 +10,13 @@ export default class DashboardIniciarRutaController extends Controller {
   @tracked editingViaje = null;
   @tracked editFields = {};
 
+  @tracked nuevoViaje = {
+    origen: '', destino: '', vehiculo: '', fecha: '',
+    valorFlete: '', comision: '', cargueValor: '', descargueValor: '',
+    descarrozar: '', peajes: '', acpm: '', parqueos: '',
+    lavados: '', reparaciones: '', descuentos: '', pesoKilos: '', tipoCarga: '', documentos: null
+  };
+
   @action
   toggleViaje(viajeId) {
     this.viajes.toggle(viajeId);
@@ -50,10 +57,38 @@ export default class DashboardIniciarRutaController extends Controller {
   }
 
   @action
-  eliminarViaje(viaje) {
+  async eliminarViaje(viaje) {
     if (confirm('¿Seguro que deseas eliminar este viaje?')) {
-      this.viajes.list = this.viajes.list.filter((v) => v.id !== viaje.id);
-      alert('Viaje eliminado');
+      const ok = await this.viajes.deleteViaje(viaje.id);
+      if (ok) {
+        alert('Viaje eliminado');
+      } else {
+        alert('Error al eliminar el viaje');
+      }
     }
+  }
+
+  @action
+  updateNuevoViajeField(field, event) {
+    this.nuevoViaje = { ...this.nuevoViaje, [field]: event.target.value };
+  }
+
+  @action
+  updateNuevoViajeFile(field, event) {
+    this.nuevoViaje = { ...this.nuevoViaje, [field]: event.target.files };
+  }
+
+  @action
+  async crearNuevoViaje(event) {
+    event.preventDefault();
+    // Solo se envían los campos básicos al backend, el resto quedan en frontend
+    const { origen, destino, vehiculo, fecha } = this.nuevoViaje;
+    await this.viajes.createViaje({ origen, destino, vehiculo, fecha });
+    this.nuevoViaje = {
+      origen: '', destino: '', vehiculo: '', fecha: '',
+      valorFlete: '', comision: '', cargueValor: '', descargueValor: '',
+      descarrozar: '', peajes: '', acpm: '', parqueos: '',
+      lavados: '', reparaciones: '', descuentos: '', pesoKilos: '', tipoCarga: '', documentos: null
+    };
   }
 }

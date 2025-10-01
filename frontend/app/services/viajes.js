@@ -83,4 +83,21 @@ export default class ViajesService extends Service {
   toggle(id) {
     this.list = this.list.map((v) => (v.id === id ? { ...v, expanded: !v.expanded } : v));
   }
+
+  // Eliminar viaje en backend
+  async deleteViaje(id) {
+    try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (this.session?.token) headers['Authorization'] = `Bearer ${this.session.token}`;
+      const res = await fetch(`${config.apiHost}/api/viajes/${id}`, {
+        method: 'DELETE',
+        headers,
+      });
+      if (!res.ok) throw new Error('Delete failed');
+      await this.fetchViajes();
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
 }

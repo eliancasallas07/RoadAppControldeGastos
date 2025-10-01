@@ -131,4 +131,16 @@ class ViajeController extends AbstractController
 
         return $this->json(['status' => 'ok', 'id' => $viaje->getId()]);
     }
+
+    #[Route('/{id}', methods: ['DELETE'])]
+    public function delete(int $id, EntityManagerInterface $em): JsonResponse
+    {
+        $viaje = $em->getRepository(Viaje::class)->find($id);
+        if (!$viaje) {
+            return $this->json(['error' => 'Viaje no encontrado'], 404);
+        }
+        $em->remove($viaje);
+        $em->flush();
+        return $this->json(['status' => 'ok']);
+    }
 }

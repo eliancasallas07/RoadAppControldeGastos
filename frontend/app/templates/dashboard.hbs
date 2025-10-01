@@ -9,32 +9,7 @@
 		</nav>
 
 	<section class="dashboard-main">
-		<h2>Panel de control</h2>
-
-			<div class="table-form">
-				<h3>Nuevo viaje</h3>
-				<table>
-					<thead>
-						<tr>
-							<th>Origen</th>
-							<th>Destino</th>
-							<th>Vehículo</th>
-							<th>Fecha</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="text" placeholder="Ciudad origen" value={{this.origen}} {{on "input" this.updateOrigen}} /></td>
-							<td><input type="text" placeholder="Ciudad destino" value={{this.destino}} {{on "input" this.updateDestino}} /></td>
-							<td><input type="text" placeholder="Placa / Modelo" value={{this.vehiculo}} {{on "input" this.updateVehiculo}} /></td>
-							<td><input type="date" value={{this.fecha}} {{on "input" this.updateFecha}} /></td>
-							<td><button class="btn-login" type="button" {{on "click" this.createViaje}}>Guardar</button></td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-
-		{{outlet}}
+	       <h2>Panel de control</h2>
+	       {{outlet}}
 	</section>
 </div>
