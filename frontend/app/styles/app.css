@@ -157,4 +157,15 @@ body, .site-shell { background: #ffffff; color: var(--text-color); font-family: 
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+.vehiculo-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2em;
+}
+@media (max-width: 900px) {
+  .vehiculo-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 

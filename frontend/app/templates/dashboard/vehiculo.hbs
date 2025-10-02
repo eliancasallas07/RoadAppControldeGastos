@@ -1,6 +1,6 @@
 <h3>Vehículo</h3>
-<form class="vehiculo-form" style="margin-bottom:2em; background:#f8f8f8; padding:1.5em; border-radius:10px; max-width:950px;">
-	<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2em;">
+<form class="vehiculo-form">
+	<div class="vehiculo-form-grid">
 		
 		<div><label>Vehículo:
 			<input type="text" value={{this.vehiculo}} {{on "input" (fn this.updateVehiculoField "vehiculo")}}
