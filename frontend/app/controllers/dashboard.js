@@ -11,6 +11,7 @@ export default class DashboardController extends Controller {
   @tracked destino = '';
   @tracked vehiculo = '';
   @tracked fecha = '';
+  @tracked showNotiBubble = false;
 
   @action
   navigate(routeName) {
@@ -37,6 +38,11 @@ export default class DashboardController extends Controller {
   @action
   updateFecha(e) {
     this.fecha = e.target.value;
+  }
+
+  @action
+  toggleNotiBubble() {
+    this.showNotiBubble = !this.showNotiBubble;
   }
 
   @action
