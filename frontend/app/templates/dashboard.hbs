@@ -1,6 +1,10 @@
 <div class="dashboard-shell">
-		<nav class="dashboard-nav">
-			<ul>
+		<div style="display:flex;align-items:center;justify-content:center;margin-top:24px;margin-bottom:18px;gap:12px;">
+			<h2 style="margin:0;text-align:center;">Panel de control</h2>
+			<img src="/icons/notificacion.png" alt="Notificaciones" style="height:28px;width:28px;cursor:pointer;" />
+		</div>
+	<nav class="dashboard-nav">
+		<ul>
 				   <li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.iniciar-ruta")}}>
 					   <img src="/icons/iniciar_ruta.png" alt="Iniciar Ruta" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;" />
 					   Iniciar Ruta
@@ -21,8 +25,7 @@
 		</nav>
 
 	<section class="dashboard-main">
-	       <h2>Panel de control</h2>
-	       {{outlet}}
+		{{outlet}}
 	</section>
 	</div>
 
