@@ -1,2 +1,113 @@
 <h3>Vehículo</h3>
-<p>Gestiona la información de tus vehículos aquí.</p>
+<form class="vehiculo-form" style="margin-bottom:2em; background:#f8f8f8; padding:1.5em; border-radius:10px; max-width:950px;">
+	<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2em;">
+		
+		<div><label>Vehículo:
+			<input type="text" value={{this.vehiculo}} {{on "input" (fn this.updateVehiculoField "vehiculo")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Marca:
+			<input type="text" value={{this.marca}} {{on "input" (fn this.updateVehiculoField "marca")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Número chasis:
+			<input type="text" value={{this.chasis}} {{on "input" (fn this.updateVehiculoField "chasis")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Número de motor:
+			<input type="text" value={{this.motor}} {{on "input" (fn this.updateVehiculoField "motor")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Cilindrada:
+			<input type="text" value={{this.cilindrada}} {{on "input" (fn this.updateVehiculoField "cilindrada")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Modelo:
+			<input type="text" value={{this.modelo}} {{on "input" (fn this.updateVehiculoField "modelo")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Línea:
+			<input type="text" value={{this.linea}} {{on "input" (fn this.updateVehiculoField "linea")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Potencia (HP):
+			<input type="number" value={{this.potencia}} {{on "input" (fn this.updateVehiculoField "potencia")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Declaración de importación:
+			<input type="text" value={{this.declaracionImportacion}} {{on "input" (fn this.updateVehiculoField "declaracionImportacion")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Fecha de importación:
+			<input type="date" value={{this.fechaImportacion}} {{on "input" (fn this.updateVehiculoField "fechaImportacion")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Puertas:
+			<input type="number" value={{this.puertas}} {{on "input" (fn this.updateVehiculoField "puertas")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Fecha de matrícula:
+			<input type="date" value={{this.fechaMatricula}} {{on "input" (fn this.updateVehiculoField "fechaMatricula")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Organismo de tránsito:
+			<input type="text" value={{this.organismoTransito}} {{on "input" (fn this.updateVehiculoField "organismoTransito")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Ciudad o pueblo:
+			<input type="text" value={{this.ciudad}} {{on "input" (fn this.updateVehiculoField "ciudad")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Tipo de carrocería:
+			<input type="text" value={{this.carroceria}} {{on "input" (fn this.updateVehiculoField "carroceria")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Combustible:
+			<select value={{this.combustible}} {{on "change" (fn this.updateVehiculoField "combustible")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%; cursor:pointer;">
+				<option value="">Seleccione</option>
+				<option value="gasolina">Gasolina</option>
+				<option value="acpm">ACPM</option>
+				<option value="gas">Gas</option>
+				<option value="electrico">Eléctrico</option>
+			</select>
+		</label></div>
+
+		<div><label>Capacidad (kg/pasajeros):
+			<input type="text" value={{this.capacidad}} {{on "input" (fn this.updateVehiculoField "capacidad")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Propietario:
+			<input type="text" value={{this.propietario}} {{on "input" (fn this.updateVehiculoField "propietario")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+		<div><label>Identificación:
+			<input type="text" value={{this.identificacion}} {{on "input" (fn this.updateVehiculoField "identificacion")}}
+				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		</label></div>
+
+	</div>
+
+	<div style="margin-top:2em; text-align:right;">
+		<button type="submit" style="background:linear-gradient(135deg,#007bff,#0056d2); color:white; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;">
+			Guardar
+		</button>
+	</div>
+</form>

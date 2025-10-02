@@ -1,2 +1,150 @@
 <h3>Configuraciones</h3>
-<p>Aquí puedes ajustar preferencias y parámetros de la aplicación.</p>
+<form class="config-form">
+  <div class="form-section">
+    <!-- Volumen -->
+    <div class="form-group">
+      <label for="volumen">Volumen general</label>
+      <input 
+        id="volumen" 
+        type="range" 
+        min="0" 
+        max="100" 
+        value={{this.volumen}} 
+        {{on "input" (fn this.updateConfigField "volumen")}} 
+      />
+      <div class="hint">Valor actual: {{this.volumen}}%</div>
+    </div>
+
+
+<!-- Notificaciones -->
+<div class="form-group">
+  <label>Notificaciones por horario</label>
+  <div class="checkbox-group">
+    <input 
+      type="checkbox" 
+      checked={{this.notificaciones}} 
+      {{on "change" (fn this.updateConfigField "notificaciones")}} 
+      id="notificaciones"
+    />
+    <label for="notificaciones" class="checkbox-label">Activar notificaciones de 8:00 a 17:00</label>
+  </div>
+</div>
+
+<!-- Contraseña -->
+<div class="form-divider"></div>
+<div class="form-group">
+  <label>Cambiar contraseña</label>
+  <input 
+    type="password" 
+    placeholder="Contraseña actual" 
+    value={{this.passActual}} 
+    {{on "input" (fn this.updateConfigField "passActual")}} 
+    class="input-field"
+  />
+  <input 
+    type="password" 
+    placeholder="Nueva contraseña" 
+    value={{this.passNueva}} 
+    {{on "input" (fn this.updateConfigField "passNueva")}} 
+    class="input-field"
+  />
+  <input 
+    type="password" 
+    placeholder="Repetir nueva contraseña" 
+    value={{this.passNueva2}} 
+    {{on "input" (fn this.updateConfigField "passNueva2")}} 
+    class="input-field"
+  />
+  <button type="button" class="btn-primary">Cambiar contraseña</button>
+</div>
+
+
+  </div>
+</form>
+
+<style>
+/* Contenedor del formulario */
+.config-form {
+  margin-bottom: 2em;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 2em 2.5em;
+  border-radius: 14px;
+  max-width: 650px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+}
+
+/* Secciones */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+}
+
+/* Etiquetas */
+.config-form label {
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 0.4em;
+  display: block;
+}
+
+/* Inputs */
+.config-form input[type="password"],
+.config-form input[type="text"],
+.config-form input[type="range"] {
+  width: 100%;
+  padding: 0.6em 0.8em;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  font-size: 1em;
+  background: #f9fafd;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+.config-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+.checkbox-label {
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* Divider */
+.form-divider {
+  border-top: 1px solid #e0e0e0;
+  margin: 0.5em 0 1em;
+}
+
+/* Hint text */
+.hint {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0.3em;
+}
+
+/* Botón */
+.btn-primary {
+  margin-top: 1.2em;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8em 2.2em;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-primary:hover {
+  background: #0056cc;
+}
+</style>
