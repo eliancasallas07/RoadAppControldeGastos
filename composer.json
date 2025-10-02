@@ -1,0 +1,6 @@
+{
+    "require": {
+        "api-platform/json-api": "^4.2",
+        "api-platform/api-pack": "^1.4"
+    }
+}

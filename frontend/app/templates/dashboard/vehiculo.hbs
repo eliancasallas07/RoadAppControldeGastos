@@ -1,11 +1,39 @@
 <h3>Vehículo</h3>
-<form class="vehiculo-form">
+
+
+{{#if this.mensaje}}
+	<div style="margin-top:1em;color:green;font-weight:bold;">{{this.mensaje}}</div>
+{{/if}}
+
+<div style="margin-top:2em;">
+			 <h4>Vehículos cargados: {{this.listaVehiculos.length}}</h4>
+			 {{#if this.mensaje}}
+				 <div style="margin:0.5em 0 1em 0;color:green;font-weight:bold;">
+					 {{this.mensaje}}
+					 {{#if this.listaVehiculos.lastObject}}
+						 <span>- {{this.listaVehiculos.lastObject.marca}} ({{this.listaVehiculos.lastObject.modelo}}) creado</span>
+					 {{/if}}
+				 </div>
+			 {{/if}}
+			 {{#if this.listaVehiculos.length}}
+					 <ul style="padding-left:0;list-style:none;">
+							 {{#each this.listaVehiculos as |vehiculo|}}
+									 <li style="margin-bottom:10px;padding:10px 14px;background:#f3f4f6;border-radius:8px;">
+											 <strong>{{vehiculo.marca}}</strong> - Modelo: {{vehiculo.modelo}}<br>
+											 Chasis: {{vehiculo.numeroChasis}} | Motor: {{vehiculo.numeroMotor}}<br>
+											 Propietario: {{vehiculo.propietario}} | Identificación: {{vehiculo.identificacion}}
+									 </li>
+							 {{/each}}
+					 </ul>
+					 <div style="margin-top:1em;color:#64748b;">Último vehículo creado: <strong>{{this.listaVehiculos.lastObject.marca}}</strong> ({{this.listaVehiculos.lastObject.modelo}})</div>
+			 {{else}}
+					 <div style="color:#64748b;">No hay vehículos cargados.</div>
+			 {{/if}}
+</div>
+	<form class="vehiculo-form" {{on "submit" this.crearVehiculo}}>
 	<div class="vehiculo-form-grid">
 		
-		<div><label>Vehículo:
-			<input type="text" value={{this.vehiculo}} {{on "input" (fn this.updateVehiculoField "vehiculo")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
+
 
 		<div><label>Marca:
 			<input type="text" value={{this.marca}} {{on "input" (fn this.updateVehiculoField "marca")}}
@@ -13,13 +41,13 @@
 		</label></div>
 
 		<div><label>Número chasis:
-			<input type="text" value={{this.chasis}} {{on "input" (fn this.updateVehiculoField "chasis")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		   <input type="text" value={{this.numeroChasis}} {{on "input" (fn this.updateVehiculoField "numeroChasis")}}
+			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
 		<div><label>Número de motor:
-			<input type="text" value={{this.motor}} {{on "input" (fn this.updateVehiculoField "motor")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		   <input type="text" value={{this.numeroMotor}} {{on "input" (fn this.updateVehiculoField "numeroMotor")}}
+			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
 		<div><label>Cilindrada:
@@ -38,8 +66,8 @@
 		</label></div>
 
 		<div><label>Potencia (HP):
-			<input type="number" value={{this.potencia}} {{on "input" (fn this.updateVehiculoField "potencia")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		   <input type="number" value={{this.potenciaHp}} {{on "input" (fn this.updateVehiculoField "potenciaHp")}}
+			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
 		<div><label>Declaración de importación:
@@ -73,8 +101,8 @@
 		</label></div>
 
 		<div><label>Tipo de carrocería:
-			<input type="text" value={{this.carroceria}} {{on "input" (fn this.updateVehiculoField "carroceria")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+		   <input type="text" value={{this.tipoCarroceria}} {{on "input" (fn this.updateVehiculoField "tipoCarroceria")}}
+			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
 		<div><label>Combustible:
@@ -110,4 +138,5 @@
 			Guardar
 		</button>
 	</div>
-</form>
+	</form>
+
