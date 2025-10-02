@@ -14,5 +14,6 @@ Router.map(function () {
     this.route('vehiculo');
     this.route('viajes-realizados');
     this.route('configuraciones');
+    this.route('ganancias');
   });
 });
