@@ -36,7 +36,7 @@ html, body { height: 100%; box-sizing: border-box; }
 .site-footer { height:var(--footer-height); display:flex; align-items:center; justify-content:center }
 
 /* Page background: keep page (outside main) white so header/footer feel separated */
-body, .site-shell { background: #ffffff; color: var(--text-color); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+body, .site-shell { background: #ffffff; color: var(--text-color); font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif; }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
 

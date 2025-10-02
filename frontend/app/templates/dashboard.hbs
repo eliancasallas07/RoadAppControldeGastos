@@ -1,10 +1,22 @@
 <div class="dashboard-shell">
 		<nav class="dashboard-nav">
 			<ul>
-				<li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.iniciar-ruta")}}>Iniciar Ruta</button></li>
-				<li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.vehiculo")}}>Vehículo</button></li>
-				<li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.viajes-realizados")}}>Viajes Realizados</button></li>
-				<li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.configuraciones")}}>Configuraciones</button></li>
+				   <li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.iniciar-ruta")}}>
+					   <img src="/icons/iniciar_ruta.png" alt="Iniciar Ruta" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;" />
+					   Iniciar Ruta
+				   </button></li>
+				   <li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.vehiculo")}}>
+					   <img src="/icons/vehiculo.png" alt="Vehículo" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;" />
+					   Vehículo
+				   </button></li>
+				   <li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.viajes-realizados")}}>
+					   <img src="/icons/viajerealizado.png" alt="Viajes Realizados" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;" />
+					   Viajes Realizados
+				   </button></li>
+				   <li><button type="button" class="nav-button" {{on "click" (fn this.navigate "dashboard.configuraciones")}}>
+					   <img src="/icons/config.png" alt="Configuraciones" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;" />
+					   Configuraciones
+				   </button></li>
 			</ul>
 		</nav>
 
@@ -12,4 +24,23 @@
 	       <h2>Panel de control</h2>
 	       {{outlet}}
 	</section>
-</div>
+	</div>
+
+	<!-- Footer oscuro centrado horizontalmente en la página -->
+	<div style="width:100%;display:flex;justify-content:center;align-items:center;padding-top:48px;padding-bottom:32px;">
+		<div style="background:#1e293b; color:#f1f5f9; padding:40px 32px 32px 32px; border-radius:22px; max-width:700px; width:100%; box-sizing:border-box; text-align:center; box-shadow:0 4px 24px rgba(15,23,42,0.10);">
+			<img src="/icons/logotipo.png" alt="Logotipo RoadApp" style="height:60px;width:auto;margin-bottom:18px;" />
+			<h2 style="font-size:2rem;font-weight:700;margin-bottom:8px;color:#38bdf8;">RoadApp S.A.S</h2>
+			<p style="margin-bottom:8px; font-size:15px; color:#f1f5f9;">NIT 123.456.789-0</p>
+			<p style="margin-bottom:8px; font-size:15px; color:#f1f5f9;">Bogotá D.C., Colombia</p>
+			<p style="margin-bottom:18px; font-size:15px; color:#f1f5f9;">Contacto: <a href="mailto:soporte@roadapp.com" style="color:#38bdf8; text-decoration:none;">soporte@roadapp.com</a> | WhatsApp: +57 300 000 0000</p>
+			<div style="margin-bottom:18px;">
+				<a href="#" style="margin:0 8px;"><img src="/icons/instagram.png" alt="Instagram" style="height:26px;width:26px;" /></a>
+				<a href="#" style="margin:0 8px;"><img src="/icons/facebook.png" alt="Facebook" style="height:26px;width:26px;" /></a>
+				<a href="#" style="margin:0 8px;"><img src="/icons/whatsapp.png" alt="WhatsApp" style="height:26px;width:26px;" /></a>
+			</div>
+			<div style="margin-bottom:0; font-size:14px; color:#94a3b8;">
+				© 2025 RoadApp - Todos los derechos reservados
+			</div>
+		</div>
+	</div>
