@@ -175,12 +175,16 @@
 <div style="margin-top:1.5em;">
   <div style="margin-bottom:0.7em; color:#64748b; font-size:1.05em;">Vehículos cargados: {{this.vehiculos.list.length}}</div>
   {{#each this.vehiculos.list as |vehiculo|}}
-    <div style="background:#fff; border:1px solid #e0e7ef; border-radius:10px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; gap:18px; box-shadow:0 2px 8px rgba(30,41,59,0.04);">
-      <span style="font-weight:600; color:#0f172a; font-size:1.1em;">{{vehiculo.marca}}</span>
-      <span style="font-weight:700; color:#334155;">→ {{vehiculo.modelo}}</span>
-      <span style="color:#64748b; font-size:0.98em;">• {{vehiculo.createdAt}}</span>
-      <button type="button" style="background:#0ea5e9;color:white;border:none;padding:0.5em 1.2em;border-radius:6px;cursor:pointer;" {{on "click" (fn this.verVehiculo vehiculo)}}>Ver</button>
-      <button type="button" style="background:#facc15;color:#334155;border:none;padding:0.5em 1.2em;border-radius:6px;margin-left:6px;cursor:pointer;" {{on "click" (fn this.editarVehiculo vehiculo)}}>Editar</button>
+    <div class="vehiculo-item-responsive">
+      <div class="vehiculo-info">
+        <span style="font-weight:600; color:#0f172a; font-size:1.1em;">{{vehiculo.marca}}</span>
+        <span style="font-weight:700; color:#334155;">→ {{vehiculo.modelo}}</span>
+        <span style="color:#64748b; font-size:0.98em;">• {{vehiculo.createdAt}}</span>
+      </div>
+      <div class="vehiculo-btns">
+        <button type="button" class="vehiculo-btn-ver" {{on "click" (fn this.verVehiculo vehiculo)}}>Ver</button>
+        <button type="button" class="vehiculo-btn-editar" {{on "click" (fn this.editarVehiculo vehiculo)}}>Editar</button>
+      </div>
     </div>
   {{else}}
     <div style="color:#64748b;">No hay vehículos registrados.</div>
