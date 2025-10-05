@@ -7,10 +7,10 @@ export default class IndexRoute extends Route {
   @service router;
 
   beforeModel() {
-    if (!this.session.isAuthenticated) {
-      this.router.replaceWith('login');
-    }
-    // Si está autenticado, sigue el flujo normal
+    // if (!this.session.isAuthenticated) {
+    //   this.router.replaceWith('login');
+    // }
+    // Saltando login temporalmente para pruebas
   }
 
 // Cambio menor para forzar build en Netlify
