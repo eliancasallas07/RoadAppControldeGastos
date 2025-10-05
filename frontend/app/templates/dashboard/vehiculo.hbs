@@ -1,5 +1,5 @@
 <h3>Vehículo</h3>
-<form class="vehiculo-form">
+<form class="vehiculo-form" {{on "submit" (fn this.crearVehiculo)}}>
 	<div class="vehiculo-form-grid">
 		
 
@@ -10,12 +10,12 @@
 		</label></div>
 
 		<div><label>Número chasis:
-		   <input type="text" value={{this.numeroChasis}} {{on "input" (fn this.updateVehiculoField "numeroChasis")}}
+		   <input type="text" value={{this.chasis}} {{on "input" (fn this.updateVehiculoField "chasis")}}
 			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
 		<div><label>Número de motor:
-		   <input type="text" value={{this.numeroMotor}} {{on "input" (fn this.updateVehiculoField "numeroMotor")}}
+		   <input type="text" value={{this.motor}} {{on "input" (fn this.updateVehiculoField "motor")}}
 			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
@@ -35,7 +35,7 @@
 		</label></div>
 
 		<div><label>Potencia (HP):
-		   <input type="number" value={{this.potenciaHp}} {{on "input" (fn this.updateVehiculoField "potenciaHp")}}
+		   <input type="number" value={{this.potencia}} {{on "input" (fn this.updateVehiculoField "potencia")}}
 			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
@@ -70,7 +70,7 @@
 		</label></div>
 
 		<div><label>Tipo de carrocería:
-		   <input type="text" value={{this.tipoCarroceria}} {{on "input" (fn this.updateVehiculoField "tipoCarroceria")}}
+		   <input type="text" value={{this.carroceria}} {{on "input" (fn this.updateVehiculoField "carroceria")}}
 			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
 		</label></div>
 
@@ -108,3 +108,18 @@
 		</button>
 	</div>
 </form>
+
+<div style="margin-top:1.5em;">
+	<div style="margin-bottom:0.7em; color:#64748b; font-size:1.05em;">Vehículos cargados: {{this.vehiculos.list.length}}</div>
+	{{#each this.vehiculos.list as |vehiculo|}}
+		<div style="background:#fff; border:1px solid #e0e7ef; border-radius:10px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; gap:18px; box-shadow:0 2px 8px rgba(30,41,59,0.04);">
+			<span style="font-weight:600; color:#0f172a; font-size:1.1em;">{{vehiculo.marca}}</span>
+			<span style="font-weight:700; color:#334155;">→ {{vehiculo.modelo}}</span>
+			<span style="color:#64748b; font-size:0.98em;">• {{vehiculo.createdAt}}</span>
+			<button type="button" style="background:#0ea5e9;color:white;border:none;padding:0.5em 1.2em;border-radius:6px;" {{on "click" (fn this.verVehiculo vehiculo)}}>Ver</button>
+			<button type="button" style="background:#facc15;color:#334155;border:none;padding:0.5em 1.2em;border-radius:6px;margin-left:6px;" {{on "click" (fn this.editarVehiculo vehiculo)}}>Editar</button>
+		</div>
+	{{else}}
+		<div style="color:#64748b;">No hay vehículos registrados.</div>
+	{{/each}}
+</div>
