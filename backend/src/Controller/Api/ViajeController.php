@@ -45,12 +45,26 @@ class ViajeController extends AbstractController
                 'origen' => $v->getOrigen(),
                 'destino' => $v->getDestino(),
                 'vehiculo' => $v->getVehiculo(),
+                'conductor' => $v->getConductor(),
                 'fecha' => $v->getFecha() ? $v->getFecha()->format('Y-m-d') : null,
+                'valorFlete' => $v->getValorFlete(),
+                'comision' => $v->getComision(),
+                'cargueValor' => $v->getCargueValor(),
+                'descargueValor' => $v->getDescargueValor(),
+                'descarrozar' => $v->getDescarrozar(),
+                'peajes' => $v->getPeajes(),
+                'acpm' => $v->getAcpm(),
+                'parqueos' => $v->getParqueos(),
+                'lavados' => $v->getLavados(),
+                'reparaciones' => $v->getReparaciones(),
+                'descuentos' => $v->getDescuentos(),
+                'documentos' => $v->getDocumentos(),
+                'pesoKilos' => $v->getPesoKilos(),
+                'tipoCarga' => $v->getTipoCarga(),
                 'usuario' => $v->getUsuario() ? ['id' => $v->getUsuario()->getId(), 'nombre' => $v->getUsuario()->getNombre()] : null,
                 'createdAt' => $v->getCreatedAt()->format(DATE_ATOM)
             ];
         }
-
         return $this->json($data);
     }
 
@@ -62,7 +76,26 @@ class ViajeController extends AbstractController
         $origen = $data['origen'] ?? null;
         $destino = $data['destino'] ?? null;
         $vehiculo = $data['vehiculo'] ?? null;
-        $fecha = $data['fecha'] ?? null; // expect YYYY-MM-DD
+        $conductor = $data['conductor'] ?? null;
+        $fecha = $data['fecha'] ?? null;
+        $valorFlete = $data['valorFlete'] ?? null;
+        $comision = $data['comision'] ?? null;
+        $cargueValor = $data['cargueValor'] ?? null;
+        $descargueValor = $data['descargueValor'] ?? null;
+        $descarrozar = $data['descarrozar'] ?? null;
+        $peajes = $data['peajes'] ?? null;
+        $acpm = $data['acpm'] ?? null;
+        $parqueos = $data['parqueos'] ?? null;
+        $lavados = $data['lavados'] ?? null;
+        $reparaciones = $data['reparaciones'] ?? null;
+        $descuentos = $data['descuentos'] ?? null;
+        $documentos = $data['documentos'] ?? null;
+        $pesoKilos = $data['pesoKilos'] ?? null;
+        $tipoCarga = $data['tipoCarga'] ?? null;
+
+        if (!$fecha) {
+            return $this->json(['error' => "El campo 'fecha' es obligatorio"], 400);
+        }
 
         // intentar obtener usuario desde token
         $auth = $request->headers->get('Authorization');
@@ -84,13 +117,27 @@ class ViajeController extends AbstractController
         $viaje->setOrigen($origen ?? '');
         $viaje->setDestino($destino ?? '');
         $viaje->setVehiculo($vehiculo ?? '');
-        if ($fecha) {
-            try {
-                $viaje->setFecha(new \DateTime($fecha));
-            } catch (\Exception $e) {
-                // ignore invalid date
-            }
+        $viaje->setConductor($conductor ?? '');
+        try {
+            $fechaObj = new \DateTime($fecha);
+            $viaje->setFecha($fechaObj);
+        } catch (\Exception $e) {
+            return $this->json(['error' => "El campo 'fecha' tiene un formato inválido"], 400);
         }
+        $viaje->setValorFlete($valorFlete);
+        $viaje->setComision($comision);
+        $viaje->setCargueValor($cargueValor);
+        $viaje->setDescargueValor($descargueValor);
+        $viaje->setDescarrozar($descarrozar);
+        $viaje->setPeajes($peajes);
+        $viaje->setAcpm($acpm);
+        $viaje->setParqueos($parqueos);
+        $viaje->setLavados($lavados);
+        $viaje->setReparaciones($reparaciones);
+        $viaje->setDescuentos($descuentos);
+        $viaje->setDocumentos($documentos);
+        $viaje->setPesoKilos($pesoKilos);
+        $viaje->setTipoCarga($tipoCarga);
         if ($usuario) {
             $viaje->setUsuario($usuario);
         }
