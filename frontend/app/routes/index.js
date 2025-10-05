@@ -12,4 +12,6 @@ export default class IndexRoute extends Route {
     }
     // Si está autenticado, sigue el flujo normal
   }
+
+// Cambio menor para forzar build en Netlify
 }
