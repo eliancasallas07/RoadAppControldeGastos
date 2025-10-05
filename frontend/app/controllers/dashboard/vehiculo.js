@@ -26,12 +26,9 @@ export default class DashboardVehiculoController extends Controller {
   @tracked capacidad = '';
   @tracked propietario = '';
   @tracked identificacion = '';
-
   @tracked editandoId = null;
-  @tracked editMarca = '';
-  @tracked editModelo = '';
-  @tracked editPlaca = '';
-  @tracked editDescripcion = '';
+  @tracked editVehiculo = {};
+  @tracked mensaje = '';
 
   @action
   updateVehiculoField(field, event) {
@@ -70,35 +67,64 @@ export default class DashboardVehiculoController extends Controller {
     this.fechaMatricula = this.organismoTransito = this.ciudad = '';
     this.carroceria = this.combustible = this.capacidad = '';
     this.propietario = this.identificacion = '';
-  }
-
-  @action
-  verVehiculo(vehiculo) {
-    alert(`Vehículo: ${vehiculo.marca} ${vehiculo.modelo} (${vehiculo.placa})\n${vehiculo.descripcion}`);
+    this.mensaje = 'Vehículo creado correctamente';
+    setTimeout(() => { this.mensaje = ''; }, 2000);
   }
 
   @action
   editarVehiculo(vehiculo) {
     this.editandoId = vehiculo.id;
-    this.editMarca = vehiculo.marca;
-    this.editModelo = vehiculo.modelo;
-    this.editPlaca = vehiculo.placa;
-    this.editDescripcion = vehiculo.descripcion;
+    // Precargar todos los campos existentes (aunque solo uno tenga valor)
+    this.editVehiculo = {
+      marca: vehiculo.marca || '',
+      modelo: vehiculo.modelo || '',
+      placa: vehiculo.placa || '',
+      descripcion: vehiculo.descripcion || '',
+      chasis: vehiculo.chasis || '',
+      motor: vehiculo.motor || '',
+      cilindrada: vehiculo.cilindrada || '',
+      linea: vehiculo.linea || '',
+      potencia: vehiculo.potencia || '',
+      declaracionImportacion: vehiculo.declaracionImportacion || '',
+      fechaImportacion: vehiculo.fechaImportacion || '',
+      puertas: vehiculo.puertas || '',
+      fechaMatricula: vehiculo.fechaMatricula || '',
+      organismoTransito: vehiculo.organismoTransito || '',
+      ciudad: vehiculo.ciudad || '',
+      carroceria: vehiculo.carroceria || '',
+      combustible: vehiculo.combustible || '',
+      capacidad: vehiculo.capacidad || '',
+      propietario: vehiculo.propietario || '',
+      identificacion: vehiculo.identificacion || ''
+    };
   }
 
   @action
-  guardarEdicion(id) {
-    this.vehiculos.editarVehiculo(id, {
-      marca: this.editMarca,
-      modelo: this.editModelo,
-      placa: this.editPlaca,
-      descripcion: this.editDescripcion
-    });
+  updateEditVehiculoField(field, event) {
+    this.editVehiculo = { ...this.editVehiculo, [field]: event.target.value };
+  }
+
+  @action
+  guardarEdicion(id, e) {
+    if (e) e.preventDefault();
+    this.vehiculos.editarVehiculo(id, { ...this.editVehiculo });
     this.editandoId = null;
+    this.editVehiculo = {};
+    this.mensaje = 'Vehículo modificado con éxito';
+    setTimeout(() => { this.mensaje = ''; }, 2000);
   }
 
   @action
   cancelarEdicion() {
     this.editandoId = null;
+    this.editVehiculo = {};
+  }
+
+  @action
+  verVehiculo(vehiculo) {
+    let desc = `Marca: ${vehiculo.marca || ''}\nModelo: ${vehiculo.modelo || ''}\nPlaca: ${vehiculo.placa || ''}`;
+    desc += `\nChasis: ${vehiculo.chasis || ''}\nMotor: ${vehiculo.motor || ''}`;
+    desc += `\nPropietario: ${vehiculo.propietario || ''}`;
+    alert(desc);
   }
 }
