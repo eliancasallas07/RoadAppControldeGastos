@@ -1,0 +1,260 @@
+<h3>Iniciar Ruta</h3>
+<form class="nuevo-viaje-form"
+      style="margin-bottom:2em; background:#f8f8f8; padding:1.5em; border-radius:10px;"
+      {{on "submit" (fn this.crearNuevoViaje)}}>
+
+  <div style="display:flex; flex-wrap:wrap; gap:1em;">
+
+
+<div style="flex:1 1 22%">
+  <label>Origen:
+    <input type="text" value={{this.nuevoViaje.origen}} {{on "input" (fn this.updateNuevoViajeField "origen")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Destino:
+    <input type="text" value={{this.nuevoViaje.destino}} {{on "input" (fn this.updateNuevoViajeField "destino")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Vehículo:
+    <input type="text" value={{this.nuevoViaje.vehiculo}} {{on "input" (fn this.updateNuevoViajeField "vehiculo")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Fecha:
+    <input type="date" value={{this.nuevoViaje.fecha}} {{on "input" (fn this.updateNuevoViajeField "fecha")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Valor flete:
+    <input type="number" value={{this.nuevoViaje.valorFlete}} {{on "input" (fn this.updateNuevoViajeField "valorFlete")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Comisión:
+    <input type="number" value={{this.nuevoViaje.comision}} {{on "input" (fn this.updateNuevoViajeField "comision")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Cargue valor:
+    <input type="number" value={{this.nuevoViaje.cargueValor}} {{on "input" (fn this.updateNuevoViajeField "cargueValor")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Descargue valor:
+    <input type="number" value={{this.nuevoViaje.descargueValor}} {{on "input" (fn this.updateNuevoViajeField "descargueValor")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Descarrozar:
+    <input type="number" value={{this.nuevoViaje.descarrozar}} {{on "input" (fn this.updateNuevoViajeField "descarrozar")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Peajes:
+    <input type="number" value={{this.nuevoViaje.peajes}} {{on "input" (fn this.updateNuevoViajeField "peajes")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>ACPM:
+    <input type="number" value={{this.nuevoViaje.acpm}} {{on "input" (fn this.updateNuevoViajeField "acpm")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Parqueos:
+    <input type="number" value={{this.nuevoViaje.parqueos}} {{on "input" (fn this.updateNuevoViajeField "parqueos")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Lavados:
+    <input type="number" value={{this.nuevoViaje.lavados}} {{on "input" (fn this.updateNuevoViajeField "lavados")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Reparaciones:
+    <input type="number" value={{this.nuevoViaje.reparaciones}} {{on "input" (fn this.updateNuevoViajeField "reparaciones")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Descuentos:
+    <input type="number" value={{this.nuevoViaje.descuentos}} {{on "input" (fn this.updateNuevoViajeField "descuentos")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 40%">
+  <label>Envío de documentos:
+    <input type="file" multiple {{on "change" (fn this.updateNuevoViajeFile "documentos")}}
+           style="margin-top:6px; padding:0.5em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.9em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 22%">
+  <label>Peso en kilos:
+    <input type="number" value={{this.nuevoViaje.pesoKilos}} {{on "input" (fn this.updateNuevoViajeField "pesoKilos")}}
+           style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+  </label>
+</div>
+
+<div style="flex:1 1 30%">
+  <label>Tipo de carga:
+    <select value={{this.nuevoViaje.tipoCarga}} {{on "change" (fn this.updateNuevoViajeField "tipoCarga")}}
+            style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%; cursor:pointer;">
+      <option value="">Seleccione</option>
+      <option value="frutas">Frutas</option>
+      <option value="electrodomesticos">Electrodomésticos</option>
+      <option value="granos">Granos</option>
+      <option value="materiales">Materiales</option>
+      <option value="otros">Otros</option>
+    </select>
+  </label>
+</div>
+
+
+  </div>
+
+  <div style="margin-top:1.5em;">
+    <button type="submit"
+            style="background:linear-gradient(135deg,#007bff,#0056d2); color:white; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;">
+      Guardar
+    </button>
+  </div>
+</form>
+
+<p style="color:#666; font-size:0.9em; margin-top:0.8em;">Viajes cargados: {{this.viajes.list.length}}</p>
+
+{{#if this.viajes.list.length}}
+
+  <div class="viajes-list" style="margin-top:1.2em;">
+    {{#each this.viajes.list as |v|}}
+      <div class="viaje-item"
+           style="background:#fff; border:1px solid #ddd; border-radius:8px; padding:1em; margin-bottom:0.8em;">
+
+
+    {{#if (eq this.editingViaje v.id)}}
+      <!-- Formulario de edición reducido (puedes ampliar campos si quieres) -->
+      <form class="viaje-edit-form" {{on "submit" (fn this.guardarEdicion)}}>
+        <div style="display:flex; flex-wrap:wrap; gap:0.6em;">
+          <div style="flex:1 1 22%">
+            <label>Origen:
+              <input type="text" value={{this.editFields.origen}} {{on "input" (fn this.updateField "origen")}}
+                     style="margin-top:6px; padding:0.5em; border:1px solid #ccc; border-radius:6px; width:100%;" />
+            </label>
+          </div>
+          <div style="flex:1 1 22%">
+            <label>Destino:
+              <input type="text" value={{this.editFields.destino}} {{on "input" (fn this.updateField "destino")}}
+                     style="margin-top:6px; padding:0.5em; border:1px solid #ccc; border-radius:6px; width:100%;" />
+            </label>
+          </div>
+          <div style="flex:1 1 22%">
+            <label>Vehículo:
+              <input type="text" value={{this.editFields.vehiculo}} {{on "input" (fn this.updateField "vehiculo")}}
+                     style="margin-top:6px; padding:0.5em; border:1px solid #ccc; border-radius:6px; width:100%;" />
+            </label>
+          </div>
+          <div style="flex:1 1 22%">
+            <label>Fecha:
+              <input type="date" value={{this.editFields.fecha}} {{on "input" (fn this.updateField "fecha")}}
+                     style="margin-top:6px; padding:0.5em; border:1px solid #ccc; border-radius:6px; width:100%;" />
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top:0.6em;">
+          <button type="submit" style="margin-right:0.5em; background:#28a745; color:white; border:none; padding:0.5em 1em; border-radius:5px; cursor:pointer;">
+            Guardar
+          </button>
+          <button type="button" {{on "click" this.cancelarEdicion}}
+                  style="background:#dc3545; color:white; border:none; padding:0.5em 1em; border-radius:5px; cursor:pointer;">
+            Cancelar
+          </button>
+        </div>
+      </form>
+
+    {{else}}
+      <!-- Resumen del viaje con botones -->
+      <div class="viaje-summary-responsive">
+        <div class="viaje-info">
+          <strong>{{v.origen}}</strong> → <strong>{{v.destino}}</strong>
+          <span style="color:#777; margin-left:0.5em;">• {{v.fecha}}</span>
+        </div>
+        <div class="viaje-btns">
+          <button class="viaje-btn-ver" {{on "click" (fn this.toggleViaje v.id)}}>Ver</button>
+          <button class="viaje-btn-editar" {{on "click" (fn this.editarViaje v)}}>Editar</button>
+          <button class="viaje-btn-finalizar" {{on "click" (fn this.finalizarViaje v)}}>Finalizar</button>
+          <button class="viaje-btn-eliminar" {{on "click" (fn this.eliminarViaje v)}}>Eliminar</button>
+        </div>
+      </div>
+
+      {{#if v.expanded}}
+        <div class="viaje-details" style="margin-top:0.6em; color:#555;">
+          <p style="margin:0.15em 0;"><strong>Vehículo:</strong> {{v.vehiculo}}</p>
+          <p style="margin:0.15em 0;"><strong>Valor flete:</strong> {{v.valorFlete}}</p>
+          <p style="margin:0.15em 0;"><strong>Comisión:</strong> {{v.comision}}</p>
+          <p style="margin:0.15em 0;"><strong>Peajes / ACPM / Parqueos:</strong> {{v.peajes}} / {{v.acpm}} / {{v.parqueos}}</p>
+          <p style="margin:0.15em 0;"><strong>Creado:</strong> {{v.createdAt}}</p>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+{{/each}}
+
+
+  </div>
+{{else}}
+  <p style="color:#777;">No hay viajes creados todavía. Crea uno desde el formulario "Iniciar Ruta".</p>
+{{/if}}
+
+
+<style>
+/* Ajustes responsivos del formulario de "Iniciar Ruta" */
+
+/* Para tablets (máx 768px) → 2 columnas */
+@media (max-width: 768px) {
+  .nuevo-viaje-form > div[style*="display:flex"] > div {
+    flex: 1 1 45% !important;
+  }
+}
+
+/* Para móviles pequeños (máx 480px) → 1 columna */
+@media (max-width: 480px) {
+  .nuevo-viaje-form > div[style*="display:flex"] > div {
+    flex: 1 1 100% !important;
+  }
+}
+
+
+</style>
+
+
+
