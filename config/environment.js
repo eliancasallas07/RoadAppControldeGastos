@@ -19,7 +19,7 @@ module.exports = function (environment) {
 
   // 🔹 Aquí agregamos la URL base de tu backend
   // Ajustado temporalmente a 8001 porque el servidor de desarrollo PHP corre ahí
-  apiHost: 'http://localhost:8000',
+  apiHost: process.env.API_HOST || 'http://localhost:8000',
   };
 
   if (environment === 'development') {
