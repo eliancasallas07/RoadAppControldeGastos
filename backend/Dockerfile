@@ -1,6 +1,9 @@
 # Dockerfile para Symfony (PHP + Apache)
 FROM php:8.2-apache
 
+# Cambia el DocumentRoot de Apache a /var/www/html/public
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+
 # Instala extensiones necesarias para Symfony y Composer (incluye pdo_pgsql para Postgres)
 RUN apt-get update \
     && apt-get install -y libicu-dev git zip unzip libpq-dev libzip-dev \
