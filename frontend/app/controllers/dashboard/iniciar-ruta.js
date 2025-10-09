@@ -37,16 +37,13 @@ export default class DashboardIniciarRutaController extends Controller {
   @action
   guardarEdicion(e) {
     if (e) e.preventDefault();
-    // DEMO: solo actualiza en frontend para que no falle sin backend
-    let idx = this.viajes.list.findIndex(v => v.id === this.editingViaje);
-    if (idx !== -1) {
-      this.viajes.list[idx] = { ...this.viajes.list[idx], ...this.editFields };
-      alert('Cambios guardados (demo)');
-    } else {
-      alert('No se encontró el viaje para editar');
-    }
-    this.editingViaje = null;
-    this.editFields = {};
+    this.viajes.updateViaje(this.editingViaje, this.editFields).then((ok) => {
+      if (!ok) {
+        alert('Error al guardar los cambios');
+      }
+      this.editingViaje = null;
+      this.editFields = {};
+    });
   }
 
   @action
