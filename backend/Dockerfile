@@ -16,8 +16,14 @@ WORKDIR /var/www/html
 # Instala Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-# Instala dependencias de Symfony
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# Variables de entorno para producción
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
+# Instala dependencias de Symfony y limpia caché solo en prod
+RUN composer install --no-interaction --optimize-autoloader --no-dev \
+    && php bin/console cache:clear --env=prod --no-warmup || true
 
 # Permisos para el cache y logs
 RUN chown -R www-data:www-data var
