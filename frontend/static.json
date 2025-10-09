@@ -1,6 +1,5 @@
 {
-  "root": "index.html",
-  "routes": {
-    "/**": "index.html"
-  }
+  "rewrites": [
+    { "source": "**", "destination": "/index.html" }
+  ]
 }

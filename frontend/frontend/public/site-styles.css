@@ -1,0 +1,119 @@
+/* Global site styles — static copy so pages get styling even if Ember build fails */
+/* Based on the app theme: soft blue background, white card, light gray inputs, header/footer */
+:root {
+  --bg-top: #eaf4ff;
+  --bg-bottom: #dcebff;
+
+  --card-bg: #ffffff;
+  --card-radius: 12px;
+  --card-padding: 36px;
+  --card-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+
+  --input-bg: #f5f7fa;
+  --input-border: #e6eef8;
+  --input-radius: 8px;
+  --input-padding: 12px;
+
+  --text-color: #0f172a;
+  --muted-color: #6b7280;
+
+  --btn-bg: #2b6cb0;
+  --btn-bg-hover: #265a94;
+
+  --container-width: 380px;
+  --gap: 14px;
+  --header-height: 64px;
+  --footer-height: 56px;
+}
+
+html, body { height: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Shell layout */
+.site-shell { display:flex; flex-direction:column; min-height:100vh }
+.site-header { height:var(--header-height); display:flex; align-items:center }
+.site-main { flex:1 1 auto; display:block }
+.site-footer { height:var(--footer-height); display:flex; align-items:center; justify-content:center }
+
+/* Page background: keep page (outside main) white so header/footer feel separated */
+body, .site-shell { background: #ffffff; color: var(--text-color); font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* Header / Footer */
+.site-header { background: var(--card-bg); padding: 16px 0; box-shadow: 0 1px 0 rgba(15,23,42,0.04); }
+.site-header .brand { margin: 0; color: var(--text-color); font-size: 18px }
+.site-main { padding: 36px 0; background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom)); }
+.site-footer { background: var(--card-bg); padding: 16px 0; text-align: center; color: var(--muted-color); box-shadow: 0 -1px 0 rgba(15,23,42,0.04); }
+
+/* Login card */
+.login-container { display:flex; align-items:center; justify-content:center; min-height:100vh }
+.login-box { width:var(--container-width); background:var(--card-bg); padding:var(--card-padding); border-radius:var(--card-radius); box-shadow:var(--card-shadow); text-align:left }
+.login-box .logo { display:block; margin:0 auto 18px; width:88px }
+.login-title { margin:0 0 8px 0; color:var(--text-color); font-size:20px; font-weight:600; text-align:center }
+.login-subtitle { margin:0 0 18px 0; color:var(--muted-color); font-size:13px; text-align:center }
+
+.login-form .form-group { margin-bottom:var(--gap) }
+.login-form label { display:block; margin-bottom:6px; color:var(--muted-color); font-size:13px }
+.login-form input { width:100%; padding:var(--input-padding); border-radius:var(--input-radius); background:var(--input-bg); border:1px solid var(--input-border); box-sizing:border-box; color:var(--text-color) }
+.login-form input::placeholder { color:#9aa6bf }
+.login-form input:focus { outline:none; box-shadow:0 0 0 4px rgba(43,108,176,0.08); border-color:rgba(43,108,176,0.35) }
+
+.btn-login { width:100%; padding:12px; margin-top:6px; background:var(--btn-bg); color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer }
+.btn-login:hover { background:var(--btn-bg-hover) }
+
+.login-error { margin-top:10px; color:#d04444 }
+.signup-text { margin-top:14px; color:var(--muted-color); text-align:center; font-size:13px }
+
+@media (max-width:460px) { .login-box { width:calc(100% - 40px); padding:20px; border-radius:10px } }
+
+/* Dashboard layout */
+.dashboard-shell { display:flex; gap:24px; align-items:stretch; align-content:stretch; width:100% }
+.dashboard-nav { width:260px; min-width:200px; background:var(--card-bg); padding:18px; border-radius:8px; box-shadow:0 4px 12px rgba(15,23,42,0.04); align-self:flex-start }
+.dashboard-nav ul { list-style:none; margin:0; padding:0 }
+.dashboard-nav li { margin-bottom:10px }
+.dashboard-nav a { color:var(--text-color); text-decoration:none; display:block; padding:8px 10px; border-radius:6px; font-weight:600 }
+.dashboard-nav a:hover { background: rgba(43,108,176,0.06) }
+.dashboard-nav a.active { background: rgba(43,108,176,0.12); color: var(--btn-bg) }
+
+.dashboard-main { flex:1 1 auto }
+.dashboard-main > .container { display:block }
+.dashboard-main h2 { margin-top:0; color:var(--text-color) }
+
+.table-form { background:transparent; padding:12px 0 }
+.table-form table { width:100%; border-collapse:collapse }
+.table-form th, .table-form td { text-align:left; padding:8px 6px; border-bottom:1px solid rgba(15,23,42,0.04) }
+.table-form input { width:100% }
+.table-form .btn-login { width:auto; padding:8px 14px }
+
+@media (max-width:1024px) {
+  .dashboard-nav { width:220px }
+  .container { padding: 0 12px }
+}
+
+@media (max-width:800px) {
+  .dashboard-shell { flex-direction:column }
+  .dashboard-nav { width:100%; display:block; overflow-x:auto; padding:10px 8px }
+  .dashboard-nav ul { display:flex; gap:8px; flex-wrap:nowrap }
+  .dashboard-nav li { margin-bottom:0 }
+  .nav-button { white-space:nowrap; flex:0 0 auto }
+}
+
+@media (max-width:800px) {
+  html, body { overflow-x: hidden }
+  .dashboard-shell { flex-direction: column; gap:12px; padding:0 12px }
+  .dashboard-nav { width:100%; display:block; padding:8px 0; overflow:visible; box-shadow:none }
+  .dashboard-nav ul { display:block }
+  .dashboard-nav li { margin-bottom:8px }
+  .nav-button, .dashboard-nav a { width:100%; display:block; text-align:left }
+
+  .table-form table, .table-form thead, .table-form tbody, .table-form tr { display:block; width:100% }
+  .table-form tr { display:block; margin-bottom:12px }
+  .table-form th, .table-form td { display:block; width:100%; padding:6px 0; border-bottom:none }
+  .table-form td > input, .table-form td > button { width:100%; box-sizing:border-box }
+  .table-form .btn-login { width:100%; padding:10px }
+
+  input, button, select, textarea { max-width:100% }
+}
+.nav-button { width:100%; background: transparent; border: 1px solid rgba(15,23,42,0.06); padding: 10px 12px; border-radius:8px; cursor:pointer; font-weight:600 }
+.nav-button:hover { background: rgba(43,108,176,0.06) }

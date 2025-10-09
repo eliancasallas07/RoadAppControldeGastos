@@ -12,6 +12,9 @@ export default class LoginFormComponent extends Component {
   @tracked errorMessage = '';
   @service session;
 
+  // Bandera temporal para saltar login en pruebas
+  skipLogin = true;
+
   // Actualiza email
   @action
   updateEmail(event) {
@@ -28,11 +31,14 @@ export default class LoginFormComponent extends Component {
   @action
   async handleSubmit(event) {
     event.preventDefault();
+    if (this.skipLogin) {
+      this.router.transitionTo('dashboard');
+      return;
+    }
+    // Lógica original:
     this.errorMessage = '';
-
     try {
-  // Llamada al backend (usa el endpoint que genera JWT)
-  let response = await fetch(`${ENV.apiHost}/api/login`, {
+      let response = await fetch(`${ENV.apiHost}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: this.email, password: this.password })

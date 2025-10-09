@@ -191,8 +191,7 @@
         </div>
 
         <div style="margin-top:0.6em;">
-          <button type="button" {{on "click" this.guardarEdicion}}
-                  style="margin-right:0.5em; background:#28a745; color:white; border:none; padding:0.5em 1em; border-radius:5px; cursor:pointer;">
+          <button type="submit" style="margin-right:0.5em; background:#28a745; color:white; border:none; padding:0.5em 1em; border-radius:5px; cursor:pointer;">
             Guardar
           </button>
           <button type="button" {{on "click" this.cancelarEdicion}}
@@ -204,28 +203,16 @@
 
     {{else}}
       <!-- Resumen del viaje con botones -->
-      <div class="viaje-summary" style="display:flex; justify-content:space-between; align-items:center;">
-        <div>
+      <div class="viaje-summary-responsive">
+        <div class="viaje-info">
           <strong>{{v.origen}}</strong> → <strong>{{v.destino}}</strong>
           <span style="color:#777; margin-left:0.5em;">• {{v.fecha}}</span>
         </div>
-        <div>
-          <button {{on "click" (fn this.toggleViaje v.id)}}
-                  style="background:#17a2b8; color:white; border:none; padding:0.45em 0.9em; border-radius:6px; margin-left:0.3em; cursor:pointer;">
-            Ver
-          </button>
-          <button {{on "click" (fn this.editarViaje v)}}
-                  style="background:#ffc107; color:#111; border:none; padding:0.45em 0.9em; border-radius:6px; margin-left:0.3em; cursor:pointer;">
-            Editar
-          </button>
-          <button {{on "click" (fn this.finalizarViaje v)}}
-                  style="background:#28a745; color:white; border:none; padding:0.45em 0.9em; border-radius:6px; margin-left:0.3em; cursor:pointer;">
-            Finalizar
-          </button>
-          <button {{on "click" (fn this.eliminarViaje v)}}
-                  style="background:#dc3545; color:white; border:none; padding:0.45em 0.9em; border-radius:6px; margin-left:0.3em; cursor:pointer;">
-            Eliminar
-          </button>
+        <div class="viaje-btns">
+          <button class="viaje-btn-ver" {{on "click" (fn this.toggleViaje v.id)}}>Ver</button>
+          <button class="viaje-btn-editar" {{on "click" (fn this.editarViaje v)}}>Editar</button>
+          <button class="viaje-btn-finalizar" {{on "click" (fn this.finalizarViaje v)}}>Finalizar</button>
+          <button class="viaje-btn-eliminar" {{on "click" (fn this.eliminarViaje v)}}>Eliminar</button>
         </div>
       </div>
 
