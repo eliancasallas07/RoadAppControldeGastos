@@ -1,10 +1,10 @@
 # Dockerfile para Symfony (PHP + Apache)
 FROM php:8.2-apache
 
-# Instala extensiones necesarias para Symfony y Composer
+# Instala extensiones necesarias para Symfony y Composer (incluye pdo_pgsql para Postgres)
 RUN apt-get update \
     && apt-get install -y libicu-dev git zip unzip libpq-dev libzip-dev \
-    && docker-php-ext-install intl pdo pdo_mysql opcache zip
+    && docker-php-ext-install intl pdo pdo_pgsql pdo_mysql opcache zip
 
 # Habilita mod_rewrite de Apache
 RUN a2enmod rewrite
