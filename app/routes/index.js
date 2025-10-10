@@ -1,3 +1,4 @@
+
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
@@ -6,12 +7,11 @@ export default class IndexRoute extends Route {
   @service router;
 
   beforeModel() {
-    this.router.replaceWith('dashboard.iniciar-ruta');
-    // Si quieres condicionar por autenticación, descomenta y ajusta:
-    // if (!this.session.isAuthenticated) {
-    //   this.router.replaceWith('login');
-    // } else {
-    //   this.router.replaceWith('dashboard.iniciar-ruta');
-    // }
+    if (!this.session.isAuthenticated) {
+      this.router.replaceWith('login');
+    }
+    // Si está autenticado, sigue el flujo normal
   }
+
+// Cambio menor para forzar build en Netlify
 }

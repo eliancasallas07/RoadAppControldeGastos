@@ -1,4 +1,4 @@
-
 import Route from '@ember/routing/route';
 
-export default class DashboardVehiculoRoute extends Route {}
+export default class DashboardVehiculoRoute extends Route {
+}

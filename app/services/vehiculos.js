@@ -5,11 +5,14 @@ export default class VehiculosService extends Service {
   @tracked list = [];
 
   // Simula crear un vehículo y agregarlo a la lista
-  createVehiculo(payload) {
+  createVehiculo({ marca, modelo, placa, descripcion }) {
     const nuevo = {
       id: Date.now(),
-      ...payload,
-      createdAt: new Date().toLocaleString(),
+      marca,
+      modelo,
+      placa,
+      descripcion,
+      createdAt: new Date().toISOString(),
     };
     this.list = [nuevo, ...this.list];
     return nuevo;

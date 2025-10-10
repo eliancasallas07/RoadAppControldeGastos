@@ -1,111 +1,192 @@
 <h3>Vehículo</h3>
-<form class="vehiculo-form">
-	<div class="vehiculo-form-grid">
-		
+{{#if this.mensaje}}
+  <div style="margin:1em 0;color:green;font-weight:bold;">{{this.mensaje}}</div>
+{{/if}}
 
+{{#if this.editandoId}}
+  <form class="vehiculo-form" {{on "submit" (fn this.guardarEdicion this.editandoId)}}>
+    <div class="vehiculo-form-grid">
+      <div><label>Marca:
+        <input type="text" value={{this.editVehiculo.marca}} {{on "input" (fn this.updateEditVehiculoField "marca")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Número chasis:
+        <input type="text" value={{this.editVehiculo.chasis}} {{on "input" (fn this.updateEditVehiculoField "chasis")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Número de motor:
+        <input type="text" value={{this.editVehiculo.motor}} {{on "input" (fn this.updateEditVehiculoField "motor")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Cilindrada:
+        <input type="text" value={{this.editVehiculo.cilindrada}} {{on "input" (fn this.updateEditVehiculoField "cilindrada")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Modelo:
+        <input type="text" value={{this.editVehiculo.modelo}} {{on "input" (fn this.updateEditVehiculoField "modelo")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Línea:
+        <input type="text" value={{this.editVehiculo.linea}} {{on "input" (fn this.updateEditVehiculoField "linea")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Potencia (HP):
+        <input type="text" value={{this.editVehiculo.potencia}} {{on "input" (fn this.updateEditVehiculoField "potencia")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Declaración de importación:
+        <input type="text" value={{this.editVehiculo.declaracionImportacion}} {{on "input" (fn this.updateEditVehiculoField "declaracionImportacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Fecha de importación:
+        <input type="date" value={{this.editVehiculo.fechaImportacion}} {{on "input" (fn this.updateEditVehiculoField "fechaImportacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Puertas:
+        <input type="text" value={{this.editVehiculo.puertas}} {{on "input" (fn this.updateEditVehiculoField "puertas")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Fecha de matrícula:
+        <input type="date" value={{this.editVehiculo.fechaMatricula}} {{on "input" (fn this.updateEditVehiculoField "fechaMatricula")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Organismo de tránsito:
+        <input type="text" value={{this.editVehiculo.organismoTransito}} {{on "input" (fn this.updateEditVehiculoField "organismoTransito")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Ciudad o pueblo:
+        <input type="text" value={{this.editVehiculo.ciudad}} {{on "input" (fn this.updateEditVehiculoField "ciudad")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Tipo de carrocería:
+        <input type="text" value={{this.editVehiculo.carroceria}} {{on "input" (fn this.updateEditVehiculoField "carroceria")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Combustible:
+        <input type="text" value={{this.editVehiculo.combustible}} {{on "input" (fn this.updateEditVehiculoField "combustible")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Capacidad (kg/pasajeros):
+        <input type="text" value={{this.editVehiculo.capacidad}} {{on "input" (fn this.updateEditVehiculoField "capacidad")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Propietario:
+        <input type="text" value={{this.editVehiculo.propietario}} {{on "input" (fn this.updateEditVehiculoField "propietario")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Identificación:
+        <input type="text" value={{this.editVehiculo.identificacion}} {{on "input" (fn this.updateEditVehiculoField "identificacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+    </div>
+    <div style="margin-top:2em; text-align:right;">
+      <button type="submit" style="background:linear-gradient(135deg,#007bff,#0056d2); color:white; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;">
+        Guardar
+      </button>
+      <button type="button" style="margin-left:1em; background:#e5e7eb; color:#334155; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;" {{on "click" this.cancelarEdicion}}>
+        Cancelar
+      </button>
+    </div>
+  </form>
+{{else}}
+  <form class="vehiculo-form" {{on "submit" (fn this.crearVehiculo)}}>
+    <div class="vehiculo-form-grid">
+      <div><label>Marca:
+        <input type="text" value={{this.marca}} {{on "input" (fn this.updateVehiculoField "marca")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Número chasis:
+        <input type="text" value={{this.chasis}} {{on "input" (fn this.updateVehiculoField "chasis")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Número de motor:
+        <input type="text" value={{this.motor}} {{on "input" (fn this.updateVehiculoField "motor")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Cilindrada:
+        <input type="text" value={{this.cilindrada}} {{on "input" (fn this.updateVehiculoField "cilindrada")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Modelo:
+        <input type="text" value={{this.modelo}} {{on "input" (fn this.updateVehiculoField "modelo")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Línea:
+        <input type="text" value={{this.linea}} {{on "input" (fn this.updateVehiculoField "linea")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Potencia (HP):
+        <input type="text" value={{this.potencia}} {{on "input" (fn this.updateVehiculoField "potencia")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Declaración de importación:
+        <input type="text" value={{this.declaracionImportacion}} {{on "input" (fn this.updateVehiculoField "declaracionImportacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Fecha de importación:
+        <input type="date" value={{this.fechaImportacion}} {{on "input" (fn this.updateVehiculoField "fechaImportacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Puertas:
+        <input type="text" value={{this.puertas}} {{on "input" (fn this.updateVehiculoField "puertas")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Fecha de matrícula:
+        <input type="date" value={{this.fechaMatricula}} {{on "input" (fn this.updateVehiculoField "fechaMatricula")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Organismo de tránsito:
+        <input type="text" value={{this.organismoTransito}} {{on "input" (fn this.updateVehiculoField "organismoTransito")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Ciudad o pueblo:
+        <input type="text" value={{this.ciudad}} {{on "input" (fn this.updateVehiculoField "ciudad")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Tipo de carrocería:
+        <input type="text" value={{this.carroceria}} {{on "input" (fn this.updateVehiculoField "carroceria")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Combustible:
+        <input type="text" value={{this.combustible}} {{on "input" (fn this.updateVehiculoField "combustible")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Capacidad (kg/pasajeros):
+        <input type="text" value={{this.capacidad}} {{on "input" (fn this.updateVehiculoField "capacidad")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Propietario:
+        <input type="text" value={{this.propietario}} {{on "input" (fn this.updateVehiculoField "propietario")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+      <div><label>Identificación:
+        <input type="text" value={{this.identificacion}} {{on "input" (fn this.updateVehiculoField "identificacion")}}
+          style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
+      </label></div>
+    </div>
+    <div style="margin-top:2em; text-align:right;">
+      <button type="submit" style="background:linear-gradient(135deg,#007bff,#0056d2); color:white; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;">
+        Guardar
+      </button>
+    </div>
+  </form>
+{{/if}}
 
-		<div><label>Marca:
-			<input type="text" value={{this.marca}} {{on "input" (fn this.updateVehiculoField "marca")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Número chasis:
-		   <input type="text" value={{this.chasis}} {{on "input" (fn this.updateVehiculoField "chasis")}}
-			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Número de motor:
-		   <input type="text" value={{this.motor}} {{on "input" (fn this.updateVehiculoField "motor")}}
-			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Cilindrada:
-			<input type="text" value={{this.cilindrada}} {{on "input" (fn this.updateVehiculoField "cilindrada")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Modelo:
-			<input type="text" value={{this.modelo}} {{on "input" (fn this.updateVehiculoField "modelo")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Línea:
-			<input type="text" value={{this.linea}} {{on "input" (fn this.updateVehiculoField "linea")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Potencia (HP):
-		   <input type="number" value={{this.potencia}} {{on "input" (fn this.updateVehiculoField "potencia")}}
-			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Declaración de importación:
-			<input type="text" value={{this.declaracionImportacion}} {{on "input" (fn this.updateVehiculoField "declaracionImportacion")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Fecha de importación:
-			<input type="date" value={{this.fechaImportacion}} {{on "input" (fn this.updateVehiculoField "fechaImportacion")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Puertas:
-			<input type="number" value={{this.puertas}} {{on "input" (fn this.updateVehiculoField "puertas")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Fecha de matrícula:
-			<input type="date" value={{this.fechaMatricula}} {{on "input" (fn this.updateVehiculoField "fechaMatricula")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Organismo de tránsito:
-			<input type="text" value={{this.organismoTransito}} {{on "input" (fn this.updateVehiculoField "organismoTransito")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Ciudad o pueblo:
-			<input type="text" value={{this.ciudad}} {{on "input" (fn this.updateVehiculoField "ciudad")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Tipo de carrocería:
-		   <input type="text" value={{this.carroceria}} {{on "input" (fn this.updateVehiculoField "carroceria")}}
-			   style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Combustible:
-			<select value={{this.combustible}} {{on "change" (fn this.updateVehiculoField "combustible")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%; cursor:pointer;">
-				<option value="">Seleccione</option>
-				<option value="gasolina">Gasolina</option>
-				<option value="acpm">ACPM</option>
-				<option value="gas">Gas</option>
-				<option value="electrico">Eléctrico</option>
-			</select>
-		</label></div>
-
-		<div><label>Capacidad (kg/pasajeros):
-			<input type="text" value={{this.capacidad}} {{on "input" (fn this.updateVehiculoField "capacidad")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Propietario:
-			<input type="text" value={{this.propietario}} {{on "input" (fn this.updateVehiculoField "propietario")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-		<div><label>Identificación:
-			<input type="text" value={{this.identificacion}} {{on "input" (fn this.updateVehiculoField "identificacion")}}
-				style="margin-top:6px; padding:0.6em 0.9em; border:1px solid #ccc; border-radius:8px; background:#fff; font-size:0.95em; width:100%;" />
-		</label></div>
-
-	</div>
-
-
-	<div style="margin-top:2em; text-align:right;">
-			<button type="button" style="background:linear-gradient(135deg,#007bff,#0056d2); color:white; border:none; padding:0.8em 2em; border-radius:8px; font-size:1.05em; cursor:pointer;">
-					Guardar
-			</button>
-	</div>
-	</form>
+<div style="margin-top:1.5em;">
+  <div style="margin-bottom:0.7em; color:#64748b; font-size:1.05em;">Vehículos cargados: {{this.vehiculos.list.length}}</div>
+  {{#each this.vehiculos.list as |vehiculo|}}
+    <div class="vehiculo-item-responsive">
+      <div class="vehiculo-info">
+        <span style="font-weight:600; color:#0f172a; font-size:1.1em;">{{vehiculo.marca}}</span>
+        <span style="font-weight:700; color:#334155;">→ {{vehiculo.modelo}}</span>
+        <span style="color:#64748b; font-size:0.98em;">• {{vehiculo.createdAt}}</span>
+      </div>
+      <div class="vehiculo-btns">
+        <button type="button" class="vehiculo-btn-ver" {{on "click" (fn this.verVehiculo vehiculo)}}>Ver</button>
+        <button type="button" class="vehiculo-btn-editar" {{on "click" (fn this.editarVehiculo vehiculo)}}>Editar</button>
+      </div>
+    </div>
+  {{else}}
+    <div style="color:#64748b;">No hay vehículos registrados.</div>
+  {{/each}}
+</div>

@@ -27,12 +27,7 @@ export default class ViajesService extends Service {
 
   // Create viaje on backend; on failure use in-memory fallback
   async createViaje({ origen, destino, vehiculo, fecha }) {
-    // Convertir fecha a formato ISO completo si viene como YYYY-MM-DD
-    let fechaISO = fecha;
-    if (fecha && /^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
-      fechaISO = `${fecha}T00:00:00`;
-    }
-    const payload = { origen, destino, vehiculo, fecha: fechaISO };
+    const payload = { origen, destino, vehiculo, fecha };
     try {
       const headers = { 'Content-Type': 'application/json' };
       if (this.session?.token) headers['Authorization'] = `Bearer ${this.session.token}`;
