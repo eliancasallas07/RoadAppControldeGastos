@@ -31,6 +31,9 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev \
 # Permisos para el cache y logs
 RUN chown -R www-data:www-data var
 
+# Ejecuta migraciones de Doctrine automáticamente en cada build/deploy
+RUN php bin/console doctrine:migrations:migrate --no-interaction || true
+
 # Expone el puerto 80
 EXPOSE 80
 
