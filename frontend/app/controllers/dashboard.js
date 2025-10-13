@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 
 export default class DashboardController extends Controller {
   @service router;
+  @service notifications;
   @service viajes;
 
   @tracked origen = '';
@@ -12,6 +13,10 @@ export default class DashboardController extends Controller {
   @tracked vehiculo = '';
   @tracked fecha = '';
   @tracked showNotiBubble = false;
+
+  get unreadCount() {
+    return this.notifications?.unreadCount || 0;
+  }
 
   @action
   navigate(routeName) {
@@ -43,6 +48,27 @@ export default class DashboardController extends Controller {
   @action
   toggleNotiBubble() {
     this.showNotiBubble = !this.showNotiBubble;
+  }
+
+  @action
+  toggleSoundSetting(e) {
+    // if called from an event, the checked value is in e.target.checked
+    if (e && e.target && typeof e.target.checked !== 'undefined') {
+      this.notifications.enableSound(!!e.target.checked);
+    } else {
+      // toggle if called without event
+      this.notifications.enableSound(!this.notifications.soundEnabled);
+    }
+  }
+
+  @action
+  markNotificationRead(id) {
+    this.notifications.markRead(id);
+  }
+
+  @action
+  removeNotification(id) {
+    this.notifications.remove(id);
   }
 
   @action

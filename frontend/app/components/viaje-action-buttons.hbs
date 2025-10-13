@@ -1,0 +1,7 @@
+{{!-- Componente de grupo de botones de acción de viaje --}}
+<div class="viaje-btns">
+  <button type="button" class="viaje-btn-ver" {{on "click" @onVer}}>{{@verLabel}}</button>
+  <button type="button" class="viaje-btn-editar" {{on "click" @onEditar}}>{{@editarLabel}}</button>
+  <button type="button" class="viaje-btn-finalizar" {{on "click" @onFinalizar}}>{{@finalizarLabel}}</button>
+  <button type="button" class="viaje-btn-eliminar" {{on "click" @onEliminar}}>{{@eliminarLabel}}</button>
+</div>

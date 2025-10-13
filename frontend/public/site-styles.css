@@ -1,3 +1,60 @@
+@media (max-width: 600px) {
+  .viaje-btns {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+    margin: 10px auto;
+  }
+  .viaje-btn-ver, .viaje-btn-editar, .viaje-btn-finalizar, .viaje-btn-eliminar {
+    min-width: 100%;
+    font-size: 1em;
+    padding: 0.5em 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .viaje-btns {
+    gap: 10px;
+    max-width: 100%;
+  }
+  .viaje-btn-ver, .viaje-btn-editar, .viaje-btn-finalizar, .viaje-btn-eliminar {
+    min-width: 90px;
+    font-size: 0.95em;
+    padding: 0.38em 0.7em;
+  }
+}
+.viaje-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 14px;
+  justify-items: center;
+  align-items: center;
+  margin: 8px 0 8px 0;
+  max-width: 220px;
+  width: 100%;
+}
+
+.viaje-btn-ver, .viaje-btn-editar, .viaje-btn-finalizar, .viaje-btn-eliminar {
+  min-width: 90px;
+  font-size: 0.97em;
+  padding: 0.32em 0.5em;
+  min-height: 34px;
+  width: 100%;
+  max-width: 110px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border: none;
+  transition: box-shadow 0.15s, filter 0.15s;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 /* Global site styles — static copy so pages get styling even if Ember build fails */
 /* Based on the app theme: soft blue background, white card, light gray inputs, header/footer */
 :root {
@@ -28,6 +85,55 @@
 
 html, body { height: 100%; box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
+
+/* Estilos para los botones de acciones de viajes (Ver, Editar, Finalizar, Eliminar) */
+.viaje-btn-ver {
+  background: #17a2b8;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(23,162,184,0.10);
+  outline: none;
+}
+.viaje-btn-ver:hover {
+  filter: brightness(1.10);
+  box-shadow: 0 4px 16px rgba(23,162,184,0.18);
+}
+
+.viaje-btn-editar {
+  background: #ffc107;
+  color: #111;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,193,7,0.10);
+  outline: none;
+}
+.viaje-btn-editar:hover {
+  filter: brightness(1.10);
+  box-shadow: 0 4px 16px rgba(255,193,7,0.18);
+}
+
+.viaje-btn-finalizar {
+  background: #28a745;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(40,167,69,0.10);
+  outline: none;
+}
+.viaje-btn-finalizar:hover {
+  filter: brightness(1.10);
+  box-shadow: 0 4px 16px rgba(40,167,69,0.18);
+}
+
+.viaje-btn-eliminar {
+  background: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220,53,69,0.10);
+  outline: none;
+}
+.viaje-btn-eliminar:hover {
+  filter: brightness(1.10);
+  box-shadow: 0 4px 16px rgba(220,53,69,0.18);
+}
 
 /* Shell layout */
 .site-shell { display:flex; flex-direction:column; min-height:100vh }
@@ -117,3 +223,50 @@ body, .site-shell { background: #ffffff; color: var(--text-color); font-family: 
 }
 .nav-button { width:100%; background: transparent; border: 1px solid rgba(15,23,42,0.06); padding: 10px 12px; border-radius:8px; cursor:pointer; font-weight:600 }
 .nav-button:hover { background: rgba(43,108,176,0.06) }
+
+/* Asegurar comportamiento vertical en móvil: los botones ocupan 100% del ancho y sin scroll horizontal */
+@media (max-width: 600px) {
+  /* En móvil, agrupar en grid 2x2 compacto */
+  .viaje-btns {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(60px, 1fr)) !important;
+    gap: 6px !important;
+    justify-items: center !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: 200px !important;
+    margin: 6px 0 !important;
+  }
+  .viaje-btns .viaje-btn-ver,
+  .viaje-btns .viaje-btn-editar,
+  .viaje-btns .viaje-btn-finalizar,
+  .viaje-btns .viaje-btn-eliminar {
+    width: 72px !important;
+    height: 32px !important;
+    padding: 0 6px !important;
+    font-size: 0.9em !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* Estilos de tarjeta para 'Viajes Realizados' */
+.viajes-list { display:flex; flex-direction:column; gap:12px }
+.viaje-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.viaje-info { flex:1 1 auto; color:#0f172a }
+.origen-dest { font-weight:600; color:#0f172a; display:block }
+.origen, .destino { display:inline-block }
+.fecha { color:#6b7280; margin-top:6px; font-size:0.95em }
+.viaje-actions { flex:0 0 auto; display:flex; align-items:center }
+.viaje-actions .viaje-btns { max-width:220px }

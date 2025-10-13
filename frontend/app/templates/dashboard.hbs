@@ -1,10 +1,40 @@
 <div class="dashboard-shell">
 		<div style="display:flex;flex-direction:column;align-items:center;margin-top:32px;margin-bottom:18px;">
   <div style="position:relative;">
-    <img src="/icons/notificacion.png" alt="Notificaciones" style="height:38px;width:38px;cursor:pointer;" {{on 'click' this.toggleNotiBubble}} />
-    {{#if this.showNotiBubble}}
-      <div class="noti-burbuja">Sin notificaciones</div>
-    {{/if}}
+		<img src="/icons/notificacion.png" alt="Notificaciones" style="height:38px;width:38px;cursor:pointer;" {{on 'click' this.toggleNotiBubble}} />
+		{{#if this.unreadCount}}
+			<div class="noti-badge">{{this.unreadCount}}</div>
+		{{/if}}
+		{{#if this.showNotiBubble}}
+			<div class="noti-burbuja">
+				<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+					<strong>Notificaciones</strong>
+					<label style="font-size:12px;display:flex;align-items:center;gap:6px;">
+						<input type="checkbox" checked={{this.notifications.soundEnabled}} {{on "change" this.toggleSoundSetting}} /> Sonido
+					</label>
+				</div>
+				<div class="noti-list" style="max-height:240px;overflow:auto;">
+					{{#if this.notifications.list.length}}
+						{{#each this.notifications.list as |n|}}
+							<div class="noti-item" style="display:flex;justify-content:space-between;align-items:center;padding:8px 6px;border-bottom:1px solid #eee;">
+								<div style="flex:1;margin-right:8px;">
+									<div style="font-size:13px;">{{n.message}}</div>
+									<div style="font-size:11px;color:#666;">{{n.createdAt}}</div>
+								</div>
+								<div style="display:flex;gap:6px;">
+									{{#unless n.read}}
+										<button type="button" {{on "click" (fn this.markNotificationRead n.id)}}>Marcar leído</button>
+									{{/unless}}
+									<button type="button" {{on "click" (fn this.removeNotification n.id)}}>Eliminar</button>
+								</div>
+							</div>
+						{{/each}}
+					{{else}}
+						<div style="padding:8px;color:#666;">Sin notificaciones</div>
+					{{/if}}
+				</div>
+			</div>
+		{{/if}}
   </div>
   <h2 style="margin:18px 0 0 0;text-align:center;">Panel de control</h2>
 </div>
